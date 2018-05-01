@@ -19,7 +19,7 @@
     id, username, password, email, phone, question, answer, role, create_time, update_time
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
+    select
     <include refid="Base_Column_List" />
     from mmall_user
     where id = #{id,jdbcType=INTEGER}
@@ -151,12 +151,9 @@
       update_time = now()
     where id = #{id,jdbcType=INTEGER}
   </update>
-  
-  
-  <select id="checkUsername" resultType="int" parameterType="string" >
-    select count(1) from mmall_user
-    where username = #{username}
-  </select>
+
+
+
 
   <select id="checkEmail" resultType="int" parameterType="string" >
     select count(1) from mmall_user
@@ -166,7 +163,7 @@
 
   <select id="selectLogin" resultMap="BaseResultMap" parameterType="map">
     SELECT
---     *???//这样真的好么?答案就是,这样不好.
+    --     *???//这样真的好么?答案就是,这样不好.
     <include refid="Base_Column_List" />
     from mmall_user
     where username = #{username}
@@ -211,7 +208,10 @@
     and id != #{userId}
   </select>
 
-
+  <select id="checkUsername" resultType="java.lang.Integer" parameterType="string" >
+    select count(1) from mmall_user
+    where username = #{username}
+  </select>
 
 
 
